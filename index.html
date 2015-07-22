@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html class='no-js' lang='en' ng-app="prDashboard">
+  <head>
+    <meta charset='utf-8'>
+    <title>Home</title>
+    <!-- Optimized mobile viewport -->
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+    <!-- Modernizr -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.js'></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.11/angular-ui-router.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="dashboard-controller.js"></script>
+  </head>
+  <body class='home marketing' ng-controller="DashboardCtrl">
+    <div ui-view>
+    </div>
+    <a ui-sref="home">State 1</a>
+    <a ui-sref="edit">State 2</a>
+    </div>
+  </body>
+</html>
