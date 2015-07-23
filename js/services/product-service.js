@@ -2,8 +2,6 @@ angular.module('sgProduct', ['sgPersistent'])
 	.service('ProductService', [ '$q', 'Persistent',
 	function($q, Persistent){
 
-
-
 		this.addProduct = function(product){
 			var deferred = $q.defer();
 			Persistent.persist(product)
@@ -19,10 +17,8 @@ angular.module('sgProduct', ['sgPersistent'])
 		this.get = function(){
 			var deferred = $q.defer();
 			Persistent.get()
-				.then(function(doc){
-					var rows = doc.rows;
-					var docs = _.pluck(rows , 'doc');
-					deferred.resolve(docs);
+				.then(function(result){
+					deferred.resolve(result);
 				}).catch(function (err) {
 				  deferred.reject(err);
 				});
@@ -32,7 +28,5 @@ angular.module('sgProduct', ['sgPersistent'])
 		this.editProduct = function(){
 
 		};
-
-
 
 	}]);

@@ -20,7 +20,7 @@ angular.module('sgPersistent', [])
 				var deferred = $q.defer();
 				db.allDocs({include_docs: true})
 					.then(function(result){
-						deferred.resolve(result);
+						deferred.resolve(_.pluck(result.rows , 'doc'));
 					})
 					.catch(function(err){
 						deferred.reject(err);
