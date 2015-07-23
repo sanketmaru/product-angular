@@ -19,26 +19,26 @@ to add new products from this screen.
 
 
 'use strict';
-angular.module('prDashboard', [
-	'ui.router'
+angular.module('sgDashboard', [
+	'ui.router',
+	'sgProduct'
 	]).config(['$urlRouterProvider','$stateProvider',
   function($urlRouterProvider, $stateProvider) {
 
-    // For any unmatched url, redirect to /state1
+    // For any unmatched url, redirect to /home
 	  $urlRouterProvider.otherwise("/home");
 	  //
 	  // Now set up the states
 	  $stateProvider
 	    .state('home', {
 	      url: "/home",
-	      templateUrl: "templates/home.html"
+	      templateUrl: "templates/home.html",
+	      controller: "DashboardCtrl"
 	    })
 	    .state('edit', {
 	      url: "/edit",
 	      templateUrl: "templates/edit.html",
-	      controller: function($scope) {
-	        $scope.items = ["A", "List", "Of", "Items"];
-	      }
+	      controller: "DashboardEditCtrl"
 	    });
   }
 ]);

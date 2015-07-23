@@ -1,17 +1,6 @@
 <div>
 	<input type="text" ng-model="searchText" placeholder="Product Search Box"></input>
-	<form name='assignRates' novalidate='' role='form'>
-		<div class="details" ng-if="searchText">
-			Product Id
-			<span>{{product.Id}}</span>
-			Quantity
-			<span>{{product.quantity}}</span>
-			Product Name
-			<input type="text" ng-model="productName"></input>
-			Cost Price
-			<input type="text" ng-model="costPrice" readonly></input>
-			Selling Price
-			<input type="text" ng-model="sellingPrice"  ng-pattern='/^[0-9]*$/'></input>
+		<div ng-if="searchText">
+			<div ng-include src="'templates/product.html'"></div>
 		</div>
-	</form>
 </div>

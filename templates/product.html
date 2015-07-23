@@ -1,0 +1,17 @@
+<form name='assignRates' novalidate='' role='form'>
+	<div class="details">
+		Product Id
+		<span ng-if="readOnly">{{product.Id}}</span>
+		<input type="text" ng-model="product.Id" ng-if="!readOnly"></input>
+		Quantity
+		<span ng-if="readOnly">{{product.quantity}}</span>
+		<input type="text" ng-model="product.qty" ng-if="!readOnly"></input>
+		Product Name
+		<input type="text" ng-model="product.name"></input>
+		Cost Price
+		<input type="text" ng-model="product.costPrice" ng-if="readOnly" readonly></input>
+		<input type="text" ng-model="product.costPrice" ng-if="!readOnly"></input>
+		Selling Price
+		<input type="text" ng-model="sellingPrice"  ng-pattern='/^[0-9]*$/'></input>
+	</div>
+</form>
