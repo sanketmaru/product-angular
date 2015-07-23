@@ -16,8 +16,8 @@ angular.module('sgDashboard')
 
     $scope.getProducts = function(){
     	ProductService.get()
-    		.then(function(res){
-    			console.log(res);
+    		.then(function(products){
+    			$scope.products = products;
     		})
     		.catch(function(err){
     			console.log(err);
