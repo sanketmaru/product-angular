@@ -11,7 +11,6 @@ angular.module('sgRequest', ['sgPersistent'])
       };
 
       var errorHandler = error || function(err) {
-        err = err || 'Something Went Wrong';
         deferred.reject(err);
       };
       return {

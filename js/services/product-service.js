@@ -1,6 +1,6 @@
 angular.module('sgProduct', ['sgRequest'])
-	.service('ProductService', [ '$q', 'RequestService',
-	function($q, RequestService){
+	.service('ProductService', ['RequestService',
+	function(RequestService){
 
 		this.add = function(product){
 			return RequestService.post(product);

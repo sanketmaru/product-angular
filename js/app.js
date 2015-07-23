@@ -6,7 +6,8 @@ numeric and cannot be less than cost price.
 'use strict';
 angular.module('sgDashboard', [
 	'ui.router',
-	'sgProduct'
+	'sgProduct',
+	'sgMessage',
 	]).config(['$urlRouterProvider','$stateProvider',
   function($urlRouterProvider, $stateProvider) {
 

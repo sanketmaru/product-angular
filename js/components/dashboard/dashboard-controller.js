@@ -1,6 +1,6 @@
 angular.module('sgDashboard')
-	.controller('DashboardCtrl', ['$scope', 'ProductService',
-		function($scope, ProductService){
+	.controller('DashboardCtrl', ['$scope', 'ProductService','UI_MESSAGE',
+		function($scope, ProductService, Message){
 
 		$scope.currentTab = 'home';
 
@@ -20,7 +20,7 @@ angular.module('sgDashboard')
     			$scope.products = products;
     		})
     		.catch(function(err){
-    			alert(err || "Error while getting Products");
+    			alert(err.message || Message.ERROR);
     		})
     };
 
@@ -35,9 +35,10 @@ angular.module('sgDashboard')
     	if(event.keyCode === ENTER_KEY_EVENT){
     		ProductService.edit($scope.product)
     		.then(function(result){
-    			alert("Success !! Updated Product")
+    			alert(Message.UPDATE_SUCCESS);
+          $scope.getProducts();
     		}).catch(function(err){
-    			alert(err || "Error while updating product");
+    			alert(err.message || Message.ERROR);
     		});
     	}
 
