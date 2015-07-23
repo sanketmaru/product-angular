@@ -9,15 +9,24 @@ angular.module('sgProduct', ['sgPersistent'])
 			Persistent.persist(product)
 				.then(function(result){
 					deferred.resolve(result);
-				}, function(err){
-					deferred.reject(err);
+				}).catch(function (err) {
+				  deferred.reject(err);
 				});
 			return deferred.promise;
 		};
 
 
-		this.getProducts = function(){
-
+		this.get = function(){
+			var deferred = $q.defer();
+			Persistent.get()
+				.then(function(doc){
+					var rows = doc.rows;
+					var docs = _.pluck(rows , 'doc');
+					deferred.resolve(docs);
+				}).catch(function (err) {
+				  deferred.reject(err);
+				});
+			return deferred.promise;
 		};
 
 		this.editProduct = function(){

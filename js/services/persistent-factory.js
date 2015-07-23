@@ -5,6 +5,7 @@ angular.module('sgPersistent', [])
 
 		return {
 			persist: function (model){
+				model = angular.extend(model, {_id:new Date().toISOString()});
 				var deferred = $q.defer();
 				db.put(model, function(err, result){
 					if(!err){
@@ -16,10 +17,15 @@ angular.module('sgPersistent', [])
 				return deferred.promise;
 			},
 			get:function(key){
-				if(!cache[key]) {
-					cache[key] = angular.fromJson(sessionStorage.getItem(key))
-				}
-				return cache[key];
+				var deferred = $q.defer();
+				db.allDocs({include_docs: true})
+					.then(function(result){
+						deferred.resolve(result);
+					})
+					.catch(function(err){
+						deferred.reject(err);
+					});
+				return deferred.promise;
 			}
 		}
 	}]);
