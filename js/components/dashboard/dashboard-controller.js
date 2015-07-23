@@ -2,16 +2,16 @@ angular.module('sgDashboard')
 	.controller('DashboardCtrl', ['$scope', 'ProductService',
 		function($scope, ProductService){
 
-		$scope.readOnly = "true";
-
 		$scope.currentTab = 'home';
 
+		var ENTER_KEY_EVENT = 13;
+
     $scope.onClickTab = function (tabName) {
-        $scope.currentTab = tabName;
+      $scope.currentTab = tabName;
     };
-    
+
     $scope.isActiveTab = function(tabName) {
-        return tabName == $scope.currentTab;
+      return tabName === $scope.currentTab;
     };
 
     $scope.getProducts = function(){
@@ -20,21 +20,30 @@ angular.module('sgDashboard')
     			$scope.products = products;
     		})
     		.catch(function(err){
-    			console.log(err);
+    			alert(err || "Error while getting Products");
     		})
-    }
+    };
 
-		$scope.editProduct = function(){
-			$scope.product = "";
-			ProductService.editProduct(product)
-				.then(function(result){
-					console.log("Product Added");
-					//alert("Success !! Product added");
-				}, function(err){
-					alert(err);
-				});
-		};
+    $scope.selectProduct = function(product){
+    	$scope.searchText = "";
+    	$scope.product = product;
+    	$scope.readOnly = true;
+    };
 
+    $scope.editProduct = function(event){
+
+    	if(event.keyCode === ENTER_KEY_EVENT){
+    		ProductService.edit($scope.product)
+    		.then(function(result){
+    			alert("Success !! Updated Product")
+    		}).catch(function(err){
+    			alert(err || "Error while updating product");
+    		});
+    	}
+
+    };
+
+    //initialized
 		$scope.getProducts();
 
 	}]);

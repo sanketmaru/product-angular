@@ -1,16 +1,12 @@
 angular.module('sgRequest', ['sgPersistent'])
-	.service('RequestService', [ '$q', 'Persistent', 
+	.service('RequestService', [ '$q', 'Persistent',
 	function($q, Persistent){
 
 
-		var _requestHandler = function(model, success, error, deferred){			
+		var _requestHandler = function(model, success, error, deferred){
       var sucessHandler = success || function(deferred) {
         return function(res) {
-          if (res.success) {
-            deferred.resolve(true);
-          } else {
-            deferred.reject(res.message);
-          }
+          deferred.resolve(res);
         };
       };
 
@@ -23,6 +19,15 @@ angular.module('sgRequest', ['sgPersistent'])
       	errorHandler : errorHandler
       }
 		};
+
+    this.update = function(model, success, error){
+      var deferred = $q.defer();
+      var requestHandler = _requestHandler(model, success, error, deferred);
+
+      Persistent.update(model)
+        .then(requestHandler.sucessHandler(deferred), requestHandler.errorHandler);
+      return deferred.promise;
+    };
 
 		this.get = function(model, success, error){
 			var deferred = $q.defer();

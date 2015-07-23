@@ -1,13 +1,13 @@
 <div class="tab-content">
-	<div data-toggle="dropdown">
-		<input class="btn btn-default dropdown-toggle" type="text" ng-model="searchText" placeholder="Product Search Box"></input>		
+	<div class="dropdown">
+		<input class="btn btn-default dropdown-toggle" type="text" ng-model="searchText" placeholder="Product Search Box"></input>
+		<ul class="dropdown-menu" ng-if="searchText" ng-class=" searchText ? 'open' : 'closed' ">
+	    <li ng-click="selectProduct(product)" ng-repeat="product in products | filter:searchText">
+	    	<span>{{product.name}}</span>
+	    </li>
+	  </ul>
 	</div>
-	<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-    <li ng-repeat="product in products | filter:searchText">
-    	<span>{{product.name}}</span>
-    </li>    
-  </ul>
-	<div ng-if="searchText1">		
+	<div ng-show="product">
 		<div ng-include src="'templates/product.html'"></div>
 	</div>
 </div>

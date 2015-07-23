@@ -16,7 +16,7 @@ angular.module('sgPersistent', [])
 				})
 				return deferred.promise;
 			},
-			get:function(key){
+			get:function(){
 				var deferred = $q.defer();
 				db.allDocs({include_docs: true})
 					.then(function(result){
@@ -25,6 +25,17 @@ angular.module('sgPersistent', [])
 					.catch(function(err){
 						deferred.reject(err);
 					});
+				return deferred.promise;
+			},
+			update: function(model){
+				var deferred = $q.defer();
+				db.put(model, function(err, result){
+					if(!err){
+						deferred.resolve(result);
+						return;
+					}
+					deferred.reject(err);
+				})
 				return deferred.promise;
 			}
 		}
