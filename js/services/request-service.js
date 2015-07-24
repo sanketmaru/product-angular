@@ -1,6 +1,6 @@
 angular.module('sgRequest', ['sgPersistent'])
 	.service('RequestService', [ '$q', 'Persistent',
-	function($q, Persistent){
+	function($q, Persistent){ 
 
     /**
     * This is a private function to have common functionality
