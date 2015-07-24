@@ -1,26 +1,31 @@
 <form name="productForm" novalidate ng-submit="addProduct()">
-	<div class="form-group">
+	<div class="form-group" ng-class="{'has-error': productForm.productId.$invalid}" >
 		<label>Product Id</label>
 		<span ng-if="readOnly">{{product.Id}}</span>
-		<input type="text" class="form-control" ng-model="product.Id" ng-if="!readOnly" required></input>
+		<input type="text" class="form-control" name="productId" ng-model="product.Id" ng-if="!readOnly" required></input>
+		<span class="help-block" ng-show="productForm.productId.$error.required">Required</span>
 	</div>
-	<div class="form-group">
+	<div class="form-group" ng-class="{'has-error': productForm.qty.$invalid}">
 		<label>Quantity</label>
 		<span ng-if="readOnly">{{product.qty}}</span>
-		<input type="text" class="form-control" ng-model="product.qty" ng-if="!readOnly" ng-pattern="/^[0-9]*$/" required></input>
+		<input type="text" class="form-control" name="qty" ng-model="product.qty" ng-if="!readOnly" ng-pattern="/^[0-9]*$/" required></input>
+		<span class="help-block" ng-show="productForm.qty.$error.required">Required</span>
 	</div>
-	<div class="form-group">
+	<div class="form-group" ng-class="{'has-error': productForm.productName.$invalid}">
 		<label>Product Name</label>
-		<input type="text" class="form-control" ng-model="product.name" ng-keypress="editProduct($event)" required></input>
+		<input type="text" class="form-control" name="productName" ng-model="product.name" ng-keypress="editProduct($event)" required></input>
+		<span class="help-block" ng-show="productForm.productName.$error.required">Required</span>		
 	</div>
-	<div class="form-group">
+	<div class="form-group" ng-class="{'has-error': productForm.costPrice.$invalid}">
 		<label>Cost Price</label>
 		<input type="text" class="form-control" ng-model="product.costPrice" ng-if="readOnly" readonly></input>
-		<input type="text" class="form-control" type="text" ng-model="product.costPrice" ng-if="!readOnly" ng-pattern="/^[0-9]*$/" required></input>
+		<input type="text" class="form-control" type="text" name="costPrice" ng-model="product.costPrice" ng-if="!readOnly" ng-pattern="/^[0-9]*$/" required></input>
+		<span class="help-block" ng-show="productForm.costPrice.$error.required">Required</span>
 	</div>
-	<div class="form-group">
+	<div class="form-group" ng-class="{'has-error': productForm.sellingPrice.$invalid}">
 		<label>Selling Price</label>
-		<input type="text" class="form-control" ng-model="product.sellingPrice" ng-keypress="editProduct($event)" ng-pattern="/^[0-9]*$/" required></input>
+		<input type="text" class="form-control" name="sellingPrice" ng-model="product.sellingPrice" ng-keypress="editProduct($event)" ng-pattern="/^[0-9]*$/" required></input>
+		<span class="help-block" ng-show="productForm.sellingPrice.$error.required">Required</span>
 	</div>
 	<input type="submit" value="Add" ng-if="!readOnly" ng-disabled="productForm.$invalid"></input>
 </form>
