@@ -1,6 +1,9 @@
 angular.module('sgPersistent', [])
 	.factory('Persistent', [ '$q', function($q){
 
+		/**
+		* Create a pouch db named product
+		**/
 		var db = new PouchDB('product');
 
 		return {

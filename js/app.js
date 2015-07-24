@@ -1,8 +1,3 @@
-/**
-7.!!!!!!!Validation : Product name should be alpha numeric character and selling price is
-numeric and cannot be less than cost price.
-**/
-
 'use strict';
 angular.module('sgDashboard', [
 	'ui.router',

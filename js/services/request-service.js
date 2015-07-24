@@ -2,7 +2,10 @@ angular.module('sgRequest', ['sgPersistent'])
 	.service('RequestService', [ '$q', 'Persistent',
 	function($q, Persistent){
 
-
+    /**
+    * This is a private function to have common functionality
+    * of request handler
+    */
 		var _requestHandler = function(model, success, error, deferred){
       var sucessHandler = success || function(deferred) {
         return function(res) {
@@ -19,6 +22,12 @@ angular.module('sgRequest', ['sgPersistent'])
       }
 		};
 
+    /**
+    * Update the model to the backend
+    * @param model
+    * @param success handler
+    * @param error handler
+    */
     this.update = function(model, success, error){
       var deferred = $q.defer();
       var requestHandler = _requestHandler(model, success, error, deferred);
@@ -28,6 +37,12 @@ angular.module('sgRequest', ['sgPersistent'])
       return deferred.promise;
     };
 
+    /**
+    * Get the model from the backend
+    * @param model
+    * @param success handler
+    * @param error handler
+    */
 		this.get = function(model, success, error){
 			var deferred = $q.defer();
 			var requestHandler = _requestHandler(model, success, error, deferred);
@@ -37,6 +52,12 @@ angular.module('sgRequest', ['sgPersistent'])
       return deferred.promise;
 		};
 
+    /**
+    * Add the model to the backend
+    * @param model
+    * @param success handler
+    * @param error handler
+    */
 		this.post = function(model, success, error) {
       var deferred = $q.defer();
       var requestHandler = _requestHandler(model, success, error, deferred);
