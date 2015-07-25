@@ -33,6 +33,17 @@ angular.module('sgDashboard')
     $scope.editProduct = function(event){
 
     	if(event.keyCode === ENTER_KEY_EVENT){
+
+        if(!$scope.product.sellingPrice || !$scope.product.name){
+          alert(Message.REQUIRED_ERROR);
+          return;
+        }
+
+        if(!ProductService.validSellingPrice($scope.product)){
+          alert(Message.SELLING_PRICE_ERROR);
+          return;
+        }
+
     		ProductService.edit($scope.product)
     		.then(function(result){
     			alert(Message.UPDATE_SUCCESS);

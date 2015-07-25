@@ -25,4 +25,10 @@ angular.module('sgProduct', ['sgRequest'])
 			return RequestService.update(product);
 		};
 
+		this.validSellingPrice = function(product){
+			var sellingPrice = parseInt(product.sellingPrice, 10);
+			var costPrice = parseInt(product.costPrice, 10);
+			return sellingPrice < costPrice ? false : true;
+		}
+
 	}]);

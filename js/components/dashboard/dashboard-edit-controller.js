@@ -8,11 +8,7 @@ angular.module('sgDashboard')
 
 		$scope.addProduct = function(){
 
-			var product = $scope.product;
-			var sellingPrice = parseInt(product.sellingPrice, 10);
-			var costPrice = parseInt(product.costPrice, 10);
-
-			if(sellingPrice < costPrice){
+			if(!ProductService.validSellingPrice($scope.product)){
 				alert(Message.SELLING_PRICE_ERROR);
 				return;
 			}
