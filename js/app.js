@@ -1,23 +1,26 @@
 'use strict';
-angular.module('sgDashboard', [
-	'ui.router',
-	'sgProduct',
-	'sgMessage',
-	]).config(['$urlRouterProvider','$stateProvider',
-  function($urlRouterProvider, $stateProvider) {
 
-    $urlRouterProvider.otherwise("/home");
+define(['angularAMD', 'angular-ui-route'], function (angularAMD) {
+	var app = angular.module('sgDashboard', ['ui.router','sgProduct','sgMessage']);
+	app.config(['$urlRouterProvider','$stateProvider',
+	  function($urlRouterProvider, $stateProvider) {
 
-	  $stateProvider
-	    .state('home', {
-	      url: "/home",
-	      templateUrl: "templates/home.html",
-	      controller: "DashboardCtrl"
-	    })
-	    .state('edit', {
-	      url: "/edit",
-	      templateUrl: "templates/edit.html",
-	      controller: "DashboardEditCtrl"
-	    });
-  }
-]);
+	    $urlRouterProvider.otherwise("/home");
+
+		  $stateProvider
+		    .state('home', {
+		      url: "/home",
+		      templateUrl: "templates/home.html",
+		      controller: "DashboardCtrl"
+		    })
+		    .state('edit', {
+		      url: "/edit",
+		      templateUrl: "templates/edit.html",
+		      controller: "DashboardEditCtrl"
+		    });
+	  }
+	]);
+
+	return angularAMD.bootstrap(app);
+
+});
