@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/sanketmaru/product-angular/issues"
   },
-  "homepage": "https://github.com/sanketmaru/product-angular#readme"
+  "homepage": "https://github.com/sanketmaru/product-angular#readme",
+  "dependencies": {
+    "requirejs": "^2.2.0"
+  }
 }
