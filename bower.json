@@ -1,0 +1,35 @@
+{
+  "name": "product-angular",
+  "version": "0.0.0",
+  "homepage": "https://github.com/sanketmaru/product-angular",
+  "authors": [
+    "sanketmaru <sanketmaru@gmail.com>"
+  ],
+  "description": "",
+  "main": "main.js",
+  "moduleType": [],
+  "keywords": [
+    "Require",
+    "angular"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "client/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.5.2",
+    "angularAMD": "~0.2.1",
+    "jquery": "~2.2.2",
+    "angular-ui-router": "~0.2.18",
+    "underscore": "~1.8.3",
+    "pouchdb": "~5.3.1"
+  },
+  "resolutions": {
+    "angular": "~1.2.0"
+  }
+}

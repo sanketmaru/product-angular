@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class='no-js' lang='en' ng-app="sgDashboard">
+<html class='no-js' lang='en'>
   <head>
     <meta charset='utf-8'>
     <title>Home</title>
@@ -14,14 +14,6 @@
         display: none;
       }
     </style>
-    <script data-main="js/main" src="js/lib/require.js"></script>
-
-    <script type="text/javascript" src="js/components/dashboard/dashboard-controller.js"></script>
-    <script type="text/javascript" src="js/components/dashboard/dashboard-edit-controller.js"></script>
-    <script type="text/javascript" src="js/services/persistent-factory.js"></script>
-    <script type="text/javascript" src="js/services/product-service.js"></script>
-    <script type="text/javascript" src="js/services/request-service.js"></script>
-    <script type="text/javascript" src="js/config/message-constant.js"></script>
     
     
   </head>
@@ -40,6 +32,6 @@
       <div ui-view>
       </div>
     </div>
-
+    <script data-main="main" src="js/lib/require.js"></script>        
   </body>
 </html>

@@ -1,10 +1,14 @@
-angular.module('sgDashboard')
-	.controller('DashboardCtrl', ['$scope', 'ProductService','UI_MESSAGE',
-		function($scope, ProductService, Message){
+define([
+  'angular', 
+  'product-service', 
+  'message-constant'], function (angular, ProductService, Message) {
 
-		$scope.currentTab = 'home';
+  
+  var dashboardController = function($scope, ProductService, Message){
 
-		var ENTER_KEY_EVENT = 13;
+    $scope.currentTab = 'home';
+
+    var ENTER_KEY_EVENT = 13;
 
     $scope.onClickTab = function (tabName) {
       $scope.currentTab = tabName;
@@ -15,24 +19,24 @@ angular.module('sgDashboard')
     };
 
     $scope.getProducts = function(){
-    	ProductService.get()
-    		.then(function(products){
-    			$scope.products = products;
-    		})
-    		.catch(function(err){
-    			alert(err.message || Message.ERROR);
-    		})
+      ProductService.get()
+        .then(function(products){
+          $scope.products = products;
+        })
+        .catch(function(err){
+          alert(err.message || Message.ERROR);
+        })
     };
 
     $scope.selectProduct = function(product){
-    	$scope.searchText = "";
-    	$scope.product = product;
-    	$scope.readOnly = true;
+      $scope.searchText = "";
+      $scope.product = product;
+      $scope.readOnly = true;
     };
 
     $scope.editProduct = function(event){
 
-    	if(event.keyCode === ENTER_KEY_EVENT){
+      if(event.keyCode === ENTER_KEY_EVENT){
 
         if(!$scope.product.sellingPrice || !$scope.product.name){
           alert(Message.REQUIRED_ERROR);
@@ -44,18 +48,24 @@ angular.module('sgDashboard')
           return;
         }
 
-    		ProductService.edit($scope.product)
-    		.then(function(result){
-    			alert(Message.UPDATE_SUCCESS);
+        ProductService.edit($scope.product)
+        .then(function(result){
+          alert(Message.UPDATE_SUCCESS);
           $scope.getProducts();
-    		}).catch(function(err){
-    			alert(err.message || Message.ERROR);
-    		});
-    	}
+        }).catch(function(err){
+          alert(err.message || Message.ERROR);
+        });
+      }
 
     };
 
     //initialized
-		$scope.getProducts();
+    $scope.getProducts();
 
-	}]);
+  };
+    
+
+  return ['$scope', 'ProductService','UI_MESSAGE',dashboardController];
+
+});
+

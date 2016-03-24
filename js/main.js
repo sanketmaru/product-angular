@@ -1,15 +1,29 @@
 require.config({
     baseUrl: "js",    
     paths: {
-      'angular': 'https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular',
-      'angular-ui-route': 'https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.11/angular-ui-router',
-      'angularAMD': 'https://cdn.jsdelivr.net/angular.amd/0.2/angularAMD.min',
-      'pouchdb': 'https://cdn.jsdelivr.net/pouchdb/3.6.0/pouchdb.min.js',
-      'underscore': 'https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js'
+      'angular': 'client/bower_components/angular/angular.min',
+      'angular-ui-router': 'client/bower_components/angular-ui-router/release/angular-ui-router.min',
+      'angularAMD': 'client/bower_components/angularAMD/angularAMD.min',
+      'ngload':'client/bower_components/angularAMD/ngload.min',
+      'pouchdb': 'client/bower_components/pouchdb/dist/pouchdb.min',
+      'underscore': 'client/bower_components/underscore/underscore-min',
+
+      'dashboard-module': 'js/components/dashboard/dashboard-module',
+      'dashboard-controller':'js/components/dashboard/dashboard-controller',
+      'dashboard-edit-controller':'js/components/dashboard/dashboard-edit-controller',
+
+      'persistent-factory': 'js/services/persistent-factory',
+      'persistent-module': 'js/services/persistent-module',
+      'product-service': 'js/services/product-service',
+      'product-module': 'js/services/product-module',
+      'request-service': 'js/services/request-service',
+      'request-module': 'js/services/request-module',
+      'message-constant':'js/config/message-constant'
     },
     shim: { 
     	'angularAMD': ['angular'], 
-    	'angular-route': ['angular'] 
+      'ngload': ['angularAMD'],
+    	'angular-ui-router': ['angular'] 
     },
     deps: ['app']
 });

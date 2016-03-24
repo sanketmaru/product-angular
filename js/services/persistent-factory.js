@@ -1,12 +1,16 @@
-angular.module('sgPersistent', [])
-	.factory('Persistent', [ '$q', function($q){
+define(['angular'], function (angular) {
+
+	var persistentFunction = function($q){
 
 		/**
 		* Create a pouch db named product
 		**/
-		var db = new PouchDB('product');
+		var db;
 
 		return {
+			createDb:function(){
+				db = new PouchDB('product');
+			},
 			persist: function (model){
 				model = angular.extend(model, {_id:new Date().toISOString()});
 				var deferred = $q.defer();
@@ -20,6 +24,9 @@ angular.module('sgPersistent', [])
 				return deferred.promise;
 			},
 			get:function(){
+				if(!db){
+					this.createDb();
+				}
 				var deferred = $q.defer();
 				db.allDocs({include_docs: true})
 					.then(function(result){
@@ -42,4 +49,10 @@ angular.module('sgPersistent', [])
 				return deferred.promise;
 			}
 		}
-	}]);
+	};
+	
+
+	return [ '$q', persistentFunction];
+
+});
+

@@ -1,0 +1,23 @@
+{
+  "name": "product-angular",
+  "version": "1.0.0",
+  "description": "Angular with PouchDB and RequireJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sanketmaru/product-angular.git"
+  },
+  "keywords": [
+    "angular",
+    "require"
+  ],
+  "author": "Sanket Maru",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sanketmaru/product-angular/issues"
+  },
+  "homepage": "https://github.com/sanketmaru/product-angular#readme"
+}

@@ -1,6 +1,9 @@
-angular.module('sgDashboard')
-	.controller('DashboardEditCtrl', ['$scope','ProductService','UI_MESSAGE',
-		function($scope, ProductService, Message){
+define([
+  'angular', 
+  'product-service', 
+  'message-constant'], function (angular, ProductService, Message) {
+
+	var dashboardEditController = function($scope, ProductService, Message){
 
 		$scope.initializeProduct = function(){
 			$scope.product = {};
@@ -24,4 +27,10 @@ angular.module('sgDashboard')
 
 		$scope.initializeProduct();
 
-	}]);
+	};
+		
+
+	return ['$scope','ProductService','UI_MESSAGE', dashboardEditController];
+
+});
+
