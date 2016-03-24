@@ -1,18 +1,14 @@
 {  
   
-  "dir": "dist",
+  "dir": "release",
   "mainConfigFile":"./main.js",
 
-  optimize:"none",
-
   "modules": [{ 
-    name: "app",
-    name:"dashboard-module" 
+    name: "app"
   }],
 
   paths: {
     app: './app',  
-    'dashboard-module'  :'js/components/dashboard/dashboard-module'
   }
 
   
