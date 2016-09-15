@@ -1,5 +1,5 @@
 angular.module('sgRequest', ['sgPersistent'])
-	.service('RequestService', [ '$q', 'Persistent', 
+	.service('RequestService', [ '$q', 'Persistent',
 	function($q, Persistent){ 
 
     /**
